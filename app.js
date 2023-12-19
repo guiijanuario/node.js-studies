@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const usersRouter = require('./routes/users');
 
 app.use(express.json());
 
@@ -13,9 +14,7 @@ app.get('/about', (req, res) => {
   res.send('Página Sobre');
 });
 
-const usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
-
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
